@@ -18,7 +18,7 @@ make = df['make'].unique()
 name_make = st.selectbox("Select manufacturers:", make)
 
 min_year, max_year = (df['model_year'].min(),df['model_year'].max())
-year_range = st.slider("Choose years:", value=(min_year,max_year), min_value=min_year, max_value=max_year)
+year_range = st.slider("Choose years:", value=(int(min_year),int(max_year)), min_value=min_year, max_value=max_year)
 actual_range = list(range(year_range[0], year_range[1]+1))
 
 manual_cars = st.checkbox('See Only Manual Cars', value=False)
