@@ -110,7 +110,7 @@ choice_for_hist = st.selectbox('split for price distribution', list_for_hist)
 
 #create histogram
 fig = px.histogram(df, x='price', color= choice_for_hist)
-fig.update_layout( title='<b>Splt of Price by {}</b>'.format(choice_for_hist),
+fig.update_layout( title='<b>Split of Price by {}</b>'.format(choice_for_hist),
                 height=600,  # Set the desired height
                 width=800    # Set the desired width
                 )
@@ -120,6 +120,7 @@ st.plotly_chart(fig, theme="streamlit")
 
 
 st.markdown("***")
+
 
 #Create Chart of Odometer Readings for price and age
 st.header('Scatter Plot: Price vs Odometer, Grouped by Car Age')
@@ -132,8 +133,8 @@ df['age']=2023-df['model_year']
 def age_category(x):
     if x<5: return '<5'
     elif x>=5 and x <10: return '5-10'
-    elif x>=10 and x<10: return '10-20'
-    else: return '>20'
+    elif x>=10 and x< 20: return '10-20'
+    else: return '> 20'
 
 #create new column in df for the age category calling the age_category function
 df['age_category'] =  df['age'].apply(age_category)
@@ -143,7 +144,9 @@ fig2 = px.scatter(df, x='price', y='odometer', color='age_category')
 st.plotly_chart(fig2)
 
 
+
 st.markdown("***")
+
 
 
 #Create Line Chart#
